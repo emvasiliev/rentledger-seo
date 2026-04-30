@@ -41,8 +41,9 @@ function Header() {
   return (
     <header className="border-b border-gray-200 bg-white">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <a href="/" className="flex items-center gap-2 font-bold text-blue-700 text-lg">
-          <span className="text-2xl">🏠</span> RentLedger
+        <a href="/" className="flex items-center gap-2 font-bold text-gray-900 text-lg">
+          <img src="/logo.svg" alt="RentLedger" width={32} height={32} className="rounded-lg" />
+          RentLedger
         </a>
         <nav className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
           <a href="/guides" className="hover:text-blue-700">Guides</a>
