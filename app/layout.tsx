@@ -203,6 +203,10 @@ function Footer() {
         <div className="mt-8 border-t pt-6 text-xs text-[hsl(215_16%_40%)]" style={{ borderColor: "hsl(215 20% 88%)" }}>
           <p>© {new Date().getFullYear()} RentLedger. All content is for informational purposes only and does not constitute tax or legal advice.</p>
           <p className="mt-1">Always consult a qualified cross-border tax professional for advice specific to your situation.</p>
+          <div className="mt-3 flex gap-4">
+            <a href="/terms" className="hover:text-[hsl(152_60%_36%)] transition-colors">Terms of Service</a>
+            <a href="/privacy" className="hover:text-[hsl(152_60%_36%)] transition-colors">Privacy Policy</a>
+          </div>
         </div>
       </div>
     </footer>
