@@ -122,7 +122,7 @@ export default function Calculator() {
           <select
             value={taxYear}
             onChange={(e) => setTaxYear(parseInt(e.target.value))}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
           >
             {[CURRENT_YEAR, CURRENT_YEAR - 1, CURRENT_YEAR - 2, CURRENT_YEAR - 3].map((y) => (
               <option key={y} value={y}>{y}</option>
@@ -135,7 +135,7 @@ export default function Calculator() {
             type="button"
             onClick={() => setUseNR6((v) => !v)}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-              useNR6 ? "bg-blue-600" : "bg-gray-300"
+              useNR6 ? "bg-[hsl(218_28%_22%)]" : "bg-gray-300"
             }`}
           >
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
@@ -150,8 +150,8 @@ export default function Calculator() {
 
       {/* ── NR6 expense input ─────────────────────────────────────────────── */}
       {useNR6 && (
-        <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-          <p className="mb-3 text-sm text-blue-800">
+        <div className="rounded-lg border border-[hsl(152_60%_85%)] bg-[hsl(152_60%_96%)] p-4">
+          <p className="mb-3 text-sm text-[hsl(222_30%_12%)]">
             With an approved NR6, withholding is 25% of <strong>net</strong> rent (gross minus
             eligible monthly expenses). Enter your estimated total monthly expenses across all
             properties below.
@@ -168,7 +168,7 @@ export default function Calculator() {
                 placeholder="e.g. 2000"
                 value={monthlyExpenses}
                 onChange={(e) => setMonthlyExpenses(e.target.value)}
-                className="rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm w-36 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm w-36 focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
               />
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function Calculator() {
           <button
             type="button"
             onClick={addProperty}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+            className="rounded-lg bg-[hsl(218_28%_22%)] px-4 py-2 text-sm font-medium text-white hover:bg-[hsl(218_28%_30%)]"
           >
             + Add property
           </button>
@@ -214,7 +214,7 @@ export default function Calculator() {
                     placeholder="e.g. 762 Carmella, Ottawa"
                     value={prop.name}
                     onChange={(e) => updateProperty(prop.id, "name", e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
                   />
                 </div>
 
@@ -230,7 +230,7 @@ export default function Calculator() {
                       placeholder="e.g. 2200"
                       value={prop.monthlyRent}
                       onChange={(e) => updateProperty(prop.id, "monthlyRent", e.target.value)}
-                      className="w-full rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
                     />
                   </div>
                 </div>
@@ -243,7 +243,7 @@ export default function Calculator() {
                     type="checkbox"
                     checked={prop.hasDeposit}
                     onChange={(e) => updateProperty(prop.id, "hasDeposit", e.target.checked)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600"
+                    className="h-4 w-4 rounded border-gray-300 text-[hsl(152_60%_36%)]"
                   />
                   <span className="text-sm text-gray-700">
                     Last-month deposit collected
@@ -264,7 +264,7 @@ export default function Calculator() {
                           placeholder="e.g. 2200"
                           value={prop.depositAmount}
                           onChange={(e) => updateProperty(prop.id, "depositAmount", e.target.value)}
-                          className="w-full rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full rounded-lg border border-gray-300 pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
                         />
                       </div>
                     </div>
@@ -277,7 +277,7 @@ export default function Calculator() {
                         type="month"
                         value={prop.depositMonth}
                         onChange={(e) => updateProperty(prop.id, "depositMonth", e.target.value)}
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
                       />
                     </div>
 
@@ -289,7 +289,7 @@ export default function Calculator() {
                         type="month"
                         value={prop.depositAppliedMonth}
                         onChange={(e) => updateProperty(prop.id, "depositAppliedMonth", e.target.value)}
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
                       />
                     </div>
                   </div>
@@ -347,7 +347,7 @@ export default function Calculator() {
                         {formatCAD(row.taxableRent)}
                       </td>
                     )}
-                    <td className="px-4 py-3 text-right font-semibold text-blue-700">
+                    <td className="px-4 py-3 text-right font-semibold text-[hsl(152_60%_36%)]">
                       {formatCAD(row.owing)}
                     </td>
                     <td className="px-4 py-3 text-gray-600 whitespace-nowrap">{row.dueDate}</td>
@@ -362,7 +362,7 @@ export default function Calculator() {
                   <td className="px-4 py-3 text-gray-900">{taxYear} Total</td>
                   <td className="px-4 py-3 text-right text-gray-900">{formatCAD(totalGross)}</td>
                   {useNR6 && <td className="px-4 py-3" />}
-                  <td className="px-4 py-3 text-right text-blue-700">{formatCAD(totalOwing)}</td>
+                  <td className="px-4 py-3 text-right text-[hsl(152_60%_36%)]">{formatCAD(totalOwing)}</td>
                   <td className="px-4 py-3" />
                   <td className="px-4 py-3" />
                 </tr>
@@ -378,20 +378,20 @@ export default function Calculator() {
             </div>
           )}
 
-          <div className="mt-6 rounded-xl border border-blue-200 bg-blue-50 p-5">
+          <div className="mt-6 rounded-xl border border-[hsl(152_60%_85%)] bg-[hsl(152_60%_96%)] p-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <div className="text-sm text-blue-800 font-medium">
+                <div className="text-sm text-[hsl(222_30%_12%)] font-medium">
                   Total {taxYear} Part XIII remittance
                 </div>
-                <div className="text-3xl font-bold text-blue-900 mt-1">
+                <div className="text-3xl font-bold text-[hsl(222_30%_12%)] mt-1">
                   {formatCAD(totalOwing)}
                 </div>
-                <div className="text-xs text-blue-700 mt-1">
+                <div className="text-xs text-[hsl(152_60%_36%)] mt-1">
                   Due in 12 monthly installments by the 15th of the following month
                 </div>
               </div>
-              <div className="text-sm text-blue-800 space-y-1">
+              <div className="text-sm text-[hsl(222_30%_12%)] space-y-1">
                 <div>Account type: <strong>NR</strong></div>
                 <div>Payment method: CRA My Account or wire to Receiver General</div>
                 <div>Keep NR receipts — required for Section 216 return</div>

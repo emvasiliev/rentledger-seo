@@ -73,10 +73,10 @@ export default async function ProvinceHubPage({ params }: Props) {
                 <a
                   key={code}
                   href={`/guides/${provinceSlug}/${state.slug}`}
-                  className="rounded-lg border border-blue-200 bg-blue-50 p-4 hover:border-blue-400 hover:bg-blue-100"
+                  className="rounded-lg border border-[hsl(152_60%_85%)] bg-[hsl(152_60%_96%)] p-4 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_90%)]"
                 >
-                  <div className="font-semibold text-blue-900">{state.name}</div>
-                  <div className="mt-1 text-xs text-blue-600">
+                  <div className="font-semibold text-[hsl(222_30%_12%)]">{state.name}</div>
+                  <div className="mt-1 text-xs text-[hsl(152_60%_36%)]">
                     {state.hasStateTax ? `State tax: ${state.incomeTaxRate}%` : "No state income tax"} ·{" "}
                     Avg property tax: {state.propertyTaxAvgRate}%
                   </div>
@@ -93,7 +93,7 @@ export default async function ProvinceHubPage({ params }: Props) {
               <a
                 key={state.code}
                 href={`/guides/${provinceSlug}/${state.slug}`}
-                className="rounded border p-3 text-sm hover:border-blue-300 hover:bg-blue-50"
+                className="rounded border p-3 text-sm hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
               >
                 <span className="font-medium text-gray-800">{state.name}</span>
                 {!state.hasStateTax && (
@@ -104,15 +104,15 @@ export default async function ProvinceHubPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">Track your cross-border rental income</h2>
-          <p className="mt-2 text-blue-700">
+        <div className="rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Track your cross-border rental income</h2>
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger handles USD→CAD conversion using official Bank of Canada rates,
             tracks your expenses, and exports CRA-ready reports.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>

@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 text-center">
+      <section className="bg-gradient-to-b from-[hsl(220_23%_97%)] to-white py-20 px-4 text-center">
         <h1 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
           Tax Guides for Canadian Landlords<br className="hidden sm:block" /> with US Rental Property
         </h1>
@@ -19,13 +19,13 @@ export default function HomePage() {
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/guides"
-            className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Browse all guides →
           </a>
           <a
             href="https://app.rentledger.ca"
-            className="rounded-lg border border-blue-600 px-6 py-3 font-semibold text-blue-600 hover:bg-blue-50"
+            className="rounded-lg border border-[hsl(152_60%_36%)] px-6 py-3 font-semibold text-[hsl(152_60%_36%)] hover:bg-[hsl(152_60%_96%)]"
           >
             Try the app free →
           </a>
@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className="mt-8 inline-block rounded-full bg-white border border-gray-200 shadow-sm px-5 py-2 text-sm text-gray-600">
             🏦 {currentRate.year} CRA Exchange Rate: <strong>1 USD = {currentRate.usdToCad} CAD</strong>
             {" · "}
-            <a href={`/tools/exchange-rate/${currentRate.year}`} className="text-blue-600 hover:underline">
+            <a href={`/tools/exchange-rate/${currentRate.year}`} className="text-[hsl(152_60%_36%)] hover:underline">
               See all years →
             </a>
           </div>
@@ -51,7 +51,7 @@ export default function HomePage() {
             <a
               key={province.slug}
               href={`/guides/${province.slug}`}
-              className="rounded-xl border border-gray-200 p-4 hover:border-blue-400 hover:bg-blue-50 transition-colors"
+              className="rounded-xl border border-gray-200 p-4 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition-colors"
             >
               <div className="font-semibold text-gray-900">{province.name}</div>
               <div className="mt-1 text-xs text-gray-400">{province.majorCities[0]}</div>
@@ -77,10 +77,10 @@ export default function HomePage() {
               <a
                 key={`${province}-${state}`}
                 href={`/guides/${province}/${state}`}
-                className="rounded-xl border bg-white p-4 hover:border-blue-400 hover:shadow-sm transition"
+                className="rounded-xl border bg-white p-4 hover:border-[hsl(152_60%_60%)] hover:shadow-sm transition"
               >
                 <div className="font-semibold text-gray-900">{label}</div>
-                <div className="mt-1 text-xs text-blue-600">Tax guide →</div>
+                <div className="mt-1 text-xs text-[hsl(152_60%_36%)]">Tax guide →</div>
               </a>
             ))}
           </div>
@@ -96,7 +96,7 @@ export default function HomePage() {
             <a
               key={topic.slug}
               href={`/topics/${topic.slug}`}
-              className="rounded-xl border p-5 hover:border-blue-400 hover:bg-blue-50 transition"
+              className="rounded-xl border p-5 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition"
             >
               <div className="font-semibold text-gray-900">{topic.title}</div>
               <p className="mt-1 text-sm text-gray-500 line-clamp-2">{topic.description}</p>
@@ -104,20 +104,20 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-6 text-center">
-          <a href="/topics" className="text-blue-600 hover:underline text-sm font-medium">View all topics →</a>
+          <a href="/topics" className="text-[hsl(152_60%_36%)] hover:underline text-sm font-medium">View all topics →</a>
         </div>
       </section>
 
       {/* App CTA */}
-      <section className="bg-blue-700 py-16 px-4 text-white text-center">
+      <section className="bg-[hsl(218_28%_22%)] py-16 px-4 text-white text-center">
         <h2 className="text-3xl font-bold">Stop doing the math manually.</h2>
-        <p className="mt-3 text-lg text-blue-100 max-w-xl mx-auto">
+        <p className="mt-3 text-lg text-[hsl(210_40%_90%)] max-w-xl mx-auto">
           RentLedger tracks your US rental income, converts to CAD at official Bank of Canada rates,
           and gives you CRA-ready reports for your accountant.
         </p>
         <a
           href="https://app.rentledger.ca"
-          className="mt-6 inline-block rounded-lg bg-white px-8 py-3 font-bold text-blue-700 hover:bg-blue-50"
+          className="mt-6 inline-block rounded-lg bg-white px-8 py-3 font-bold text-[hsl(152_60%_36%)] hover:bg-[hsl(152_60%_96%)]"
         >
           Try RentLedger Free →
         </a>

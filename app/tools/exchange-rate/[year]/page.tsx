@@ -101,7 +101,7 @@ export default async function ExchangeRateYearPage({ params }: Props) {
         <Disclaimer />
 
         {/* Rate hero card */}
-        <div className="my-8 rounded-2xl bg-blue-600 p-8 text-white text-center">
+        <div className="my-8 rounded-2xl bg-[hsl(218_28%_22%)] p-8 text-white text-center">
           <div className="text-sm font-medium uppercase tracking-widest opacity-80">
             {year} Annual Average Rate
           </div>
@@ -131,7 +131,7 @@ export default async function ExchangeRateYearPage({ params }: Props) {
                 {[500, 1000, 5000, 10000, 15000, 20000, 25000, 30000, 50000].map((usd) => (
                   <tr key={usd}>
                     <td className="py-2 pr-6 font-mono">${usd.toLocaleString()} USD</td>
-                    <td className="py-2 font-mono text-blue-700">
+                    <td className="py-2 font-mono text-[hsl(152_60%_36%)]">
                       ${(usd * rateData.usdToCad).toLocaleString("en-CA", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} CAD
                     </td>
                   </tr>
@@ -144,12 +144,12 @@ export default async function ExchangeRateYearPage({ params }: Props) {
         {/* Year navigation */}
         <div className="mt-8 flex items-center justify-between">
           {prevYear ? (
-            <a href={`/tools/exchange-rate/${prevYear}`} className="text-blue-600 hover:underline">
+            <a href={`/tools/exchange-rate/${prevYear}`} className="text-[hsl(152_60%_36%)] hover:underline">
               ← {prevYear} Rate {prevRate ? `(${prevRate.usdToCad})` : ""}
             </a>
           ) : <div />}
           {nextYear && (
-            <a href={`/tools/exchange-rate/${nextYear}`} className="text-blue-600 hover:underline">
+            <a href={`/tools/exchange-rate/${nextYear}`} className="text-[hsl(152_60%_36%)] hover:underline">
               {nextYear} Rate →
             </a>
           )}
@@ -182,9 +182,9 @@ export default async function ExchangeRateYearPage({ params }: Props) {
               </thead>
               <tbody className="divide-y">
                 {FALLBACK_EXCHANGE_RATES.map((r) => (
-                  <tr key={r.year} className={r.year === yearNum ? "bg-blue-50 font-semibold" : "hover:bg-gray-50"}>
+                  <tr key={r.year} className={r.year === yearNum ? "bg-[hsl(152_60%_96%)] font-semibold" : "hover:bg-gray-50"}>
                     <td className="px-4 py-2">
-                      <a href={`/tools/exchange-rate/${r.year}`} className="text-blue-600 hover:underline">
+                      <a href={`/tools/exchange-rate/${r.year}`} className="text-[hsl(152_60%_36%)] hover:underline">
                         {r.year}
                       </a>
                     </td>
@@ -197,15 +197,15 @@ export default async function ExchangeRateYearPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">Let RentLedger handle the math</h2>
-          <p className="mt-2 text-blue-700">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Let RentLedger handle the math</h2>
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger automatically applies the correct Bank of Canada annual average rate to your
             US rental income so you never have to look it up again.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>

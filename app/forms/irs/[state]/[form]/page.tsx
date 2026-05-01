@@ -105,7 +105,7 @@ export default async function IrsStateFormPage({ params }: Props) {
         </nav>
 
         <div className="mb-2 flex items-center gap-2">
-          <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
+          <span className="inline-block rounded-full bg-[hsl(152_60%_90%)] px-3 py-1 text-xs font-semibold text-[hsl(222_30%_12%)]">
             {form.authority}
           </span>
           <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
@@ -146,7 +146,7 @@ export default async function IrsStateFormPage({ params }: Props) {
               href={form.officialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 block text-blue-600 hover:underline"
+              className="mt-0.5 block text-[hsl(152_60%_36%)] hover:underline"
             >
               {form.authority} official page →
             </a>
@@ -173,18 +173,18 @@ export default async function IrsStateFormPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">
             Simplify your {state.name} rental tax prep
           </h2>
-          <p className="mt-2 text-blue-700">
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger tracks your {state.name} rental income in USD, converts to CAD at CRA-approved
             rates, and generates reports your accountant needs to file {form.code} and your Canadian
             T1 return.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>
@@ -195,28 +195,28 @@ export default async function IrsStateFormPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <a
               href={`/forms/irs/${stateSlug}`}
-              className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50"
+              className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
             >
               <div className="font-medium text-gray-900">All IRS forms for {state.name} →</div>
               <div className="mt-1 text-sm text-gray-500">Every IRS guide for {state.name} landlords</div>
             </a>
             <a
               href={`/forms/${form.slug}`}
-              className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50"
+              className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
             >
               <div className="font-medium text-gray-900">{form.code} — General Guide →</div>
               <div className="mt-1 text-sm text-gray-500">Overview of {form.code} for all Canadian landlords</div>
             </a>
             <a
               href="/forms/irs"
-              className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50"
+              className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
             >
               <div className="font-medium text-gray-900">IRS guides by state →</div>
               <div className="mt-1 text-sm text-gray-500">Browse all US states</div>
             </a>
             <a
               href={`/tools/exchange-rate/${new Date().getFullYear() - 1}`}
-              className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50"
+              className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
             >
               <div className="font-medium text-gray-900">CRA Exchange Rate Tool →</div>
               <div className="mt-1 text-sm text-gray-500">Convert {state.name} rental income to CAD</div>

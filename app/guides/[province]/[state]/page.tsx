@@ -169,17 +169,17 @@ export default async function ProvinceStatePage({ params }: Props) {
         </section>
 
         {/* CTA */}
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">
             Automate your cross-border rental accounting
           </h2>
-          <p className="mt-2 text-blue-700">
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger tracks your {state.name} rental income in USD and automatically converts to CAD
             using CRA-approved Bank of Canada exchange rates.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>
@@ -195,7 +195,7 @@ export default async function ProvinceStatePage({ params }: Props) {
 function StatCard({ label, value, note }: { label: string; value: string; note: string }) {
   return (
     <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
-      <div className="text-2xl font-bold text-blue-600">{value}</div>
+      <div className="text-2xl font-bold text-[hsl(152_60%_36%)]">{value}</div>
       <div className="mt-1 text-xs font-medium text-gray-700">{label}</div>
       <div className="mt-0.5 text-xs text-gray-400">{note}</div>
     </div>
@@ -335,19 +335,19 @@ function RelatedLinks({
     <div className="mt-12 border-t pt-8">
       <h2 className="mb-4 text-lg font-semibold text-gray-900">Related Guides</h2>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <a href={`/guides/${provinceSlug}`} className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50">
+        <a href={`/guides/${provinceSlug}`} className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]">
           <div className="font-medium text-gray-900">All {province.name} Cross-Border Guides →</div>
           <div className="mt-1 text-sm text-gray-500">Every US state guide for {province.name} landlords</div>
         </a>
-        <a href="/forms/t1135" className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50">
+        <a href="/forms/t1135" className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]">
           <div className="font-medium text-gray-900">T1135 Foreign Property Report →</div>
           <div className="mt-1 text-sm text-gray-500">Report your {state.name} property to CRA</div>
         </a>
-        <a href="/forms/schedule-e" className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50">
+        <a href="/forms/schedule-e" className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]">
           <div className="font-medium text-gray-900">Schedule E Guide →</div>
           <div className="mt-1 text-sm text-gray-500">How to deduct {state.name} rental expenses on your US return</div>
         </a>
-        <a href={`/tools/exchange-rate/${new Date().getFullYear() - 1}`} className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50">
+        <a href={`/tools/exchange-rate/${new Date().getFullYear() - 1}`} className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]">
           <div className="font-medium text-gray-900">CRA Exchange Rate Tool →</div>
           <div className="mt-1 text-sm text-gray-500">Convert {state.name} rental income to CAD</div>
         </a>

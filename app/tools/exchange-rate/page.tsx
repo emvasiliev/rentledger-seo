@@ -24,14 +24,14 @@ export default function ExchangeRateIndexPage() {
       </p>
 
       {currentRate && (
-        <div className="mb-8 rounded-2xl bg-blue-600 p-8 text-white text-center">
+        <div className="mb-8 rounded-2xl bg-[hsl(218_28%_22%)] p-8 text-white text-center">
           <div className="text-sm font-medium uppercase tracking-widest opacity-80">
             {currentRate.year} Annual Average Rate
           </div>
           <div className="mt-2 text-6xl font-bold">{currentRate.usdToCad}</div>
           <div className="mt-2 text-lg opacity-90">1 USD = {currentRate.usdToCad} CAD</div>
           <a href={`/tools/exchange-rate/${currentRate.year}`}
-            className="mt-4 inline-block rounded-lg bg-white px-5 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50">
+            className="mt-4 inline-block rounded-lg bg-white px-5 py-2 text-sm font-semibold text-[hsl(152_60%_36%)] hover:bg-[hsl(152_60%_96%)]">
             Full {currentRate.year} details →
           </a>
         </div>
@@ -51,11 +51,11 @@ export default function ExchangeRateIndexPage() {
             {FALLBACK_EXCHANGE_RATES.map((r) => (
               <tr key={r.year} className="hover:bg-gray-50">
                 <td className="px-4 py-3 font-medium text-gray-900">{r.year}</td>
-                <td className="px-4 py-3 font-mono text-blue-700">{r.usdToCad}</td>
+                <td className="px-4 py-3 font-mono text-[hsl(152_60%_36%)]">{r.usdToCad}</td>
                 <td className="px-4 py-3 font-mono text-gray-600">{r.cadToUsd}</td>
                 <td className="px-4 py-3">
                   <a href={`/tools/exchange-rate/${r.year}`}
-                    className="text-xs text-blue-600 hover:underline">
+                    className="text-xs text-[hsl(152_60%_36%)] hover:underline">
                     Details →
                   </a>
                 </td>
@@ -65,13 +65,13 @@ export default function ExchangeRateIndexPage() {
         </table>
       </div>
 
-      <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-        <h2 className="text-xl font-bold text-blue-900">Let RentLedger handle the conversion</h2>
-        <p className="mt-2 text-blue-700">
+      <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+        <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Let RentLedger handle the conversion</h2>
+        <p className="mt-2 text-[hsl(152_60%_36%)]">
           RentLedger automatically applies the correct Bank of Canada rate to your US rental income every year.
         </p>
         <a href="https://app.rentledger.ca"
-          className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700">
+          className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]">
           Try RentLedger Free →
         </a>
       </div>

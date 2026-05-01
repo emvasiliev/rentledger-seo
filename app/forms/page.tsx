@@ -25,9 +25,9 @@ export default function FormsIndexPage() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {CRA_FORMS.map((form) => (
             <a key={form.slug} href={`/forms/${form.slug}`}
-              className="rounded-xl border p-5 hover:border-blue-400 hover:bg-blue-50 transition">
+              className="rounded-xl border p-5 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition">
               <div className="flex items-center gap-2">
-                <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800">{form.code}</span>
+                <span className="rounded bg-[hsl(152_60%_90%)] px-2 py-0.5 text-xs font-bold text-[hsl(222_30%_12%)]">{form.code}</span>
               </div>
               <div className="mt-2 font-semibold text-gray-900">{form.name}</div>
               <div className="mt-1 text-sm text-gray-500 line-clamp-2">{form.description.slice(0, 100)}...</div>
@@ -42,7 +42,7 @@ export default function FormsIndexPage() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {IRS_FORMS.map((form) => (
             <a key={form.slug} href={`/forms/${form.slug}`}
-              className="rounded-xl border p-5 hover:border-blue-400 hover:bg-blue-50 transition">
+              className="rounded-xl border p-5 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition">
               <div className="flex items-center gap-2">
                 <span className="rounded bg-red-100 px-2 py-0.5 text-xs font-bold text-red-800">{form.code}</span>
               </div>
@@ -54,11 +54,11 @@ export default function FormsIndexPage() {
         </div>
       </section>
 
-      <div className="rounded-xl bg-blue-50 p-6 text-center">
-        <h2 className="text-xl font-bold text-blue-900">Let RentLedger handle the paperwork prep</h2>
-        <p className="mt-2 text-blue-700">Track income, convert currencies, and export CRA-ready reports automatically.</p>
+      <div className="rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+        <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Let RentLedger handle the paperwork prep</h2>
+        <p className="mt-2 text-[hsl(152_60%_36%)]">Track income, convert currencies, and export CRA-ready reports automatically.</p>
         <a href="https://app.rentledger.ca"
-          className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700">
+          className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]">
           Try RentLedger Free →
         </a>
       </div>

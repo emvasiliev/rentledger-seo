@@ -57,17 +57,17 @@ export default async function IrsStateHubPage({ params }: Props) {
 
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-600">
+          <div className="text-2xl font-bold text-[hsl(152_60%_36%)]">
             {state.hasStateTax ? `${state.incomeTaxRate}%` : "None"}
           </div>
           <div className="mt-1 text-xs font-medium text-gray-700">{state.name} state income tax</div>
         </div>
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-600">{state.propertyTaxAvgRate}%</div>
+          <div className="text-2xl font-bold text-[hsl(152_60%_36%)]">{state.propertyTaxAvgRate}%</div>
           <div className="mt-1 text-xs font-medium text-gray-700">Avg property tax rate</div>
         </div>
         <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
-          <div className="text-2xl font-bold text-blue-600">15%</div>
+          <div className="text-2xl font-bold text-[hsl(152_60%_36%)]">15%</div>
           <div className="mt-1 text-xs font-medium text-gray-700">FIRPTA withholding on sale</div>
         </div>
       </div>
@@ -84,10 +84,10 @@ export default async function IrsStateHubPage({ params }: Props) {
           <a
             key={form.id}
             href={`/forms/irs/${stateSlug}/${form.slug}`}
-            className="flex items-start gap-4 rounded-lg border border-gray-200 p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+            className="flex items-start gap-4 rounded-lg border border-gray-200 p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)] transition-colors"
           >
             <div className="min-w-[90px]">
-              <span className="rounded-md bg-blue-100 px-2 py-1 text-xs font-bold text-blue-800">
+              <span className="rounded-md bg-[hsl(152_60%_90%)] px-2 py-1 text-xs font-bold text-[hsl(222_30%_12%)]">
                 {form.code}
               </span>
             </div>
@@ -99,15 +99,15 @@ export default async function IrsStateHubPage({ params }: Props) {
         ))}
       </div>
 
-      <div className="mt-10 rounded-xl bg-blue-50 p-6 text-center">
-        <h2 className="text-xl font-bold text-blue-900">Track your {state.name} rental income</h2>
-        <p className="mt-2 text-blue-700">
+      <div className="mt-10 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+        <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Track your {state.name} rental income</h2>
+        <p className="mt-2 text-[hsl(152_60%_36%)]">
           RentLedger automatically converts {state.name} rental income to CAD using CRA-approved
           rates and generates the reports you need for Schedule E and Form 1040-NR.
         </p>
         <a
           href="https://app.rentledger.ca"
-          className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+          className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
         >
           Try RentLedger Free →
         </a>

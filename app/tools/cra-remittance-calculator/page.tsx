@@ -63,7 +63,7 @@ export default function CraRemittanceCalculatorPage() {
             { value: "Section 216", label: "Annual return", note: "claim a refund if over-withheld" },
           ].map((s) => (
             <div key={s.label} className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
-              <div className="text-2xl font-bold text-blue-600">{s.value}</div>
+              <div className="text-2xl font-bold text-[hsl(152_60%_36%)]">{s.value}</div>
               <div className="mt-1 text-xs font-medium text-gray-700">{s.label}</div>
               <div className="mt-0.5 text-xs text-gray-400">{s.note}</div>
             </div>
@@ -116,18 +116,18 @@ export default function CraRemittanceCalculatorPage() {
         </section>
 
         {/* CTA */}
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">
             Track remittances automatically with RentLedger
           </h2>
-          <p className="mt-2 text-blue-700">
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger calculates your monthly Part XIII owing in real time, handles deposit
             cash-basis timing automatically, and lets you upload NR receipts directly — so your
             accountant has everything they need for your Section 216 return.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>
@@ -143,7 +143,7 @@ export default function CraRemittanceCalculatorPage() {
               { href: "/forms/section-216", title: "Section 216 Election →", desc: "Recover over-withheld Part XIII tax" },
               { href: "/forms/part-xiii-withholding", title: "Part XIII Overview →", desc: "Full guide to the withholding rules" },
             ].map((l) => (
-              <a key={l.href} href={l.href} className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50">
+              <a key={l.href} href={l.href} className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]">
                 <div className="font-medium text-gray-900">{l.title}</div>
                 <div className="mt-1 text-sm text-gray-500">{l.desc}</div>
               </a>

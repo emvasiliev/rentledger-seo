@@ -43,7 +43,7 @@ export default function TopicsIndexPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {topics.map((topic) => (
               <a key={topic.slug} href={`/topics/${topic.slug}`}
-                className="rounded-xl border p-5 hover:border-blue-400 hover:bg-blue-50 transition">
+                className="rounded-xl border p-5 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500 capitalize">
                     {topic.difficulty}
@@ -57,11 +57,11 @@ export default function TopicsIndexPage() {
         </section>
       ))}
 
-      <div className="rounded-xl bg-blue-50 p-6 text-center">
-        <h2 className="text-xl font-bold text-blue-900">Handle it all automatically</h2>
-        <p className="mt-2 text-blue-700">RentLedger is built for Canadian landlords with US properties.</p>
+      <div className="rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+        <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Handle it all automatically</h2>
+        <p className="mt-2 text-[hsl(152_60%_36%)]">RentLedger is built for Canadian landlords with US properties.</p>
         <a href="https://app.rentledger.ca"
-          className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700">
+          className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]">
           Try RentLedger Free →
         </a>
       </div>

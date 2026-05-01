@@ -85,7 +85,7 @@ export default async function TopicPage({ params }: Props) {
           <div className="prose prose-gray max-w-none mt-8">
             <p className="text-gray-600 italic">
               Detailed content for this topic is being prepared. Check back soon, or{" "}
-              <a href="https://app.rentledger.ca" className="text-blue-600 hover:underline">
+              <a href="https://app.rentledger.ca" className="text-[hsl(152_60%_36%)] hover:underline">
                 try RentLedger
               </a>{" "}
               to manage your cross-border rental accounting directly.
@@ -102,7 +102,7 @@ export default async function TopicPage({ params }: Props) {
                 <a
                   key={form.id}
                   href={`/forms/${form.slug}`}
-                  className="rounded-lg border p-4 hover:border-blue-300 hover:bg-blue-50"
+                  className="rounded-lg border p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)]"
                 >
                   <div className="font-semibold text-gray-900">{form.code}</div>
                   <div className="mt-1 text-sm text-gray-500 line-clamp-2">{form.name}</div>
@@ -112,15 +112,15 @@ export default async function TopicPage({ params }: Props) {
           </section>
         )}
 
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">Handle this automatically</h2>
-          <p className="mt-2 text-blue-700">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Handle this automatically</h2>
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger is built specifically for Canadian landlords with US properties — handling
             currency conversion, expense tracking, and CRA-ready reports.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>

@@ -59,7 +59,7 @@ export default async function FormPage({ params }: Props) {
           <span>{form.code}</span>
         </nav>
 
-        <div className="mb-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
+        <div className="mb-2 inline-block rounded-full bg-[hsl(152_60%_90%)] px-3 py-1 text-xs font-semibold text-[hsl(222_30%_12%)]">
           {form.authority}
         </div>
         <h1 className="mb-2 text-3xl font-bold text-gray-900">{form.code}</h1>
@@ -82,7 +82,7 @@ export default async function FormPage({ params }: Props) {
               href={form.officialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-0.5 block text-blue-600 hover:underline"
+              className="mt-0.5 block text-[hsl(152_60%_36%)] hover:underline"
             >
               {form.authority === "CRA" ? "CRA" : form.authority === "IRS" ? "IRS" : "FinCEN"} official page →
             </a>
@@ -108,7 +108,7 @@ export default async function FormPage({ params }: Props) {
                   if (!related) return null;
                   return (
                     <li key={relatedId}>
-                      <a href={`/forms/${related.slug}`} className="text-blue-600 hover:underline">
+                      <a href={`/forms/${related.slug}`} className="text-[hsl(152_60%_36%)] hover:underline">
                         {related.code} — {related.name}
                       </a>
                     </li>
@@ -129,15 +129,15 @@ export default async function FormPage({ params }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 rounded-xl bg-blue-50 p-6 text-center">
-          <h2 className="text-xl font-bold text-blue-900">Simplify your cross-border tax prep</h2>
-          <p className="mt-2 text-blue-700">
+        <div className="mt-12 rounded-xl bg-[hsl(152_60%_96%)] p-6 text-center">
+          <h2 className="text-xl font-bold text-[hsl(222_30%_12%)]">Simplify your cross-border tax prep</h2>
+          <p className="mt-2 text-[hsl(152_60%_36%)]">
             RentLedger automatically tracks your rental income, converts currencies using CRA-approved
             rates, and exports reports your accountant can use to file {form.code}.
           </p>
           <a
             href="https://app.rentledger.ca"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+            className="mt-4 inline-block rounded-lg bg-[hsl(218_28%_22%)] px-6 py-3 font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
           >
             Try RentLedger Free →
           </a>

@@ -34,13 +34,13 @@ export default function IrsFormsIndexPage() {
         forms specific to that state.
       </p>
 
-      <div className="mb-8 rounded-lg border border-blue-200 bg-blue-50 p-5">
-        <h2 className="mb-3 font-semibold text-blue-900">Forms covered for each state</h2>
+      <div className="mb-8 rounded-lg border border-[hsl(152_60%_85%)] bg-[hsl(152_60%_96%)] p-5">
+        <h2 className="mb-3 font-semibold text-[hsl(222_30%_12%)]">Forms covered for each state</h2>
         <div className="flex flex-wrap gap-2">
           {IRS_FORMS.map((form) => (
             <span
               key={form.id}
-              className="rounded-full bg-white px-3 py-1 text-sm font-medium text-blue-800 shadow-sm"
+              className="rounded-full bg-white px-3 py-1 text-sm font-medium text-[hsl(222_30%_12%)] shadow-sm"
             >
               {form.code}
             </span>
@@ -54,7 +54,7 @@ export default function IrsFormsIndexPage() {
           <a
             key={state.slug}
             href={`/forms/irs/${state.slug}`}
-            className="rounded-lg border border-gray-200 p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+            className="rounded-lg border border-gray-200 p-4 hover:border-[hsl(152_60%_75%)] hover:bg-[hsl(152_60%_96%)] transition-colors"
           >
             <div className="font-medium text-gray-900">{state.name}</div>
             <div className="mt-1 text-xs text-gray-500">
@@ -70,7 +70,7 @@ export default function IrsFormsIndexPage() {
           <a
             key={state.slug}
             href={`/forms/irs/${state.slug}`}
-            className="rounded-lg border border-gray-100 px-3 py-2 text-sm text-gray-700 hover:border-blue-300 hover:text-blue-700 transition-colors"
+            className="rounded-lg border border-gray-100 px-3 py-2 text-sm text-gray-700 hover:border-[hsl(152_60%_75%)] hover:text-[hsl(152_60%_36%)] transition-colors"
           >
             {state.name}
           </a>
