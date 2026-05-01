@@ -81,10 +81,8 @@ function Header() {
           <a href="/tools/exchange-rate" className="hover:text-[hsl(152_60%_36%)] transition-colors">Exchange Rate</a>
           <a
             href="https://app.rentledger.ca"
-            className="rounded-[0.625rem] px-4 py-2 font-semibold text-[hsl(210_40%_98%)] transition-colors"
-            style={{ backgroundColor: "hsl(218 28% 22%)", fontFamily: "'Space Grotesk', sans-serif" }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "hsl(218 28% 30%)")}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "hsl(218 28% 22%)")}
+            className="rounded-[0.625rem] px-4 py-2 font-semibold text-[hsl(210_40%_98%)] bg-[hsl(218_28%_22%)] hover:bg-[hsl(218_28%_30%)] transition-colors"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Open App →
           </a>
