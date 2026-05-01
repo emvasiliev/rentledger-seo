@@ -87,6 +87,62 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Free Tools */}
+      <section className="mx-auto max-w-5xl px-4 py-16">
+        <h2 className="mb-2 text-2xl font-bold text-gray-900">Free Tax Tools</h2>
+        <p className="mb-6 text-gray-500">Calculators built specifically for Canadian landlords with US rental income.</p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* CRA Remittance Calculator — featured */}
+          <a
+            href="/tools/cra-remittance-calculator"
+            className="group rounded-xl border-2 border-[hsl(152_60%_46%)] bg-[hsl(152_60%_97%)] p-6 hover:bg-[hsl(152_60%_92%)] transition-colors"
+          >
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 h-11 w-11 rounded-xl bg-[hsl(152_60%_46%)] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                  <path d="M7 8h.01M12 8h.01M17 8h.01M7 12h.01M12 12h.01M17 12h.01"/>
+                </svg>
+              </div>
+              <div>
+                <div className="font-bold text-gray-900 text-lg group-hover:text-[hsl(152_60%_30%)] transition-colors">
+                  CRA Remittance Calculator
+                </div>
+                <p className="mt-1 text-sm text-gray-600">
+                  Calculate your Part XIII non-resident withholding tax. Supports multiple properties, NR6 elections, and deposit cash-basis handling.
+                </p>
+                <div className="mt-3 text-sm font-semibold text-[hsl(152_60%_36%)]">Open calculator →</div>
+              </div>
+            </div>
+          </a>
+
+          {/* Exchange Rate tool */}
+          <a
+            href="/tools/exchange-rate"
+            className="group rounded-xl border border-gray-200 bg-white p-6 hover:border-[hsl(152_60%_60%)] hover:bg-[hsl(152_60%_96%)] transition-colors"
+          >
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 h-11 w-11 rounded-xl bg-[hsl(218_28%_22%)] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div>
+                <div className="font-bold text-gray-900 text-lg group-hover:text-[hsl(152_60%_30%)] transition-colors">
+                  USD/CAD Exchange Rates
+                </div>
+                <p className="mt-1 text-sm text-gray-600">
+                  Official Bank of Canada annual average exchange rates for CRA reporting. Every year back to 2015.
+                </p>
+                <div className="mt-3 text-sm font-semibold text-[hsl(152_60%_36%)]">See all years →</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Featured topics */}
       <section className="mx-auto max-w-5xl px-4 py-16">
         <h2 className="mb-2 text-2xl font-bold text-gray-900">Key Topics</h2>
