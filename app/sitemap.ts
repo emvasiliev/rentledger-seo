@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PROVINCES } from "@/data/provinces";
 import { US_STATES } from "@/data/us-states";
-import { ALL_FORMS } from "@/data/tax-forms";
+import { ALL_FORMS, IRS_FORMS } from "@/data/tax-forms";
 import { TOPICS } from "@/data/topics";
 
 const BASE_URL = "https://rentledger.ca";
@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/topics`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/tools`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/tools/exchange-rate`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.8 },
+    { url: `${BASE_URL}/tools/cra-remittance-calculator`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.9 },
   );
 
   // Province hub pages (13 pages)
@@ -66,6 +67,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: topic.difficulty === "beginner" ? 0.8 : 0.7,
     });
+  }
+
+  // IRS forms by state index pages (1 + 51 state hubs + 510 form×state pages)
+  urls.push({
+    url: `${BASE_URL}/forms/irs`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  });
+  for (const state of US_STATES) {
+    urls.push({
+      url: `${BASE_URL}/forms/irs/${state.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: state.canadianLandlordPopularity === "very-high" ? 0.75 : 0.65,
+    });
+    for (const form of IRS_FORMS) {
+      urls.push({
+        url: `${BASE_URL}/forms/irs/${state.slug}/${form.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "yearly",
+        priority: state.canadianLandlordPopularity === "very-high" ? 0.7 : 0.6,
+      });
+    }
   }
 
   // Exchange rate year pages (MIN_YEAR to current year)

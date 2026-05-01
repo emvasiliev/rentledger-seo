@@ -11,6 +11,7 @@
     "generate:guides": "npx tsx scripts/generate-content.ts --category=guides --mode=batch",
     "generate:topics": "npx tsx scripts/generate-content.ts --category=topics --mode=single",
     "generate:forms": "npx tsx scripts/generate-content.ts --category=forms --mode=single",
+    "generate:irs-state": "npx tsx scripts/generate-content.ts --category=irs-state-forms --mode=batch",
     "generate:all": "npx tsx scripts/generate-content.ts --all --mode=batch",
     "batch:download": "npx tsx scripts/download-batch.ts"
   },

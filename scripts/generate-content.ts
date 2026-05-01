@@ -112,6 +112,49 @@ Write a detailed, accurate guide on the following topic for Canadian landlords:
 Output ONLY the MDX content body (no frontmatter, no disclaimer, no CTA).`;
 }
 
+function buildIrsStateFormPrompt(
+  formCode: string,
+  formName: string,
+  formDescription: string,
+  filingDeadline: string,
+  applicableTo: string,
+  tags: string[],
+  stateName: string,
+  stateCode: string,
+  hasStateTax: boolean,
+  stateTaxRate: number,
+  propertyTaxRate: number,
+  specialNotes: string | undefined
+): string {
+  return `You are a Canadian cross-border tax expert writing content for RentLedger.ca.
+
+Write a detailed, state-specific guide to ${formCode} (${formName}) for a Canadian landlord who owns rental property in ${stateName}.
+
+## Form background: ${formDescription}
+
+## Who files it: ${applicableTo}
+
+## Filing deadline: ${filingDeadline}
+
+## Tags/keywords: ${tags.join(", ")}
+
+## ${stateName}-specific context:
+- ${stateName} (${stateCode}) state income tax: ${hasStateTax ? `${stateTaxRate}% on rental income — non-resident state return required` : "None — no state income tax"}
+- ${stateName} average effective property tax rate: ${propertyTaxRate}%
+${specialNotes ? `- Important ${stateName} note: ${specialNotes}` : ""}
+
+## Requirements:
+- Length: 800–1,200 words
+- Structure: What is it → How it applies specifically in ${stateName} → Who files → Step-by-step how to complete → ${stateName}-specific considerations → Common mistakes → Key deadlines
+- Be specific: use ${stateName}'s actual tax rates, form numbers, deadlines
+- Reference the Canada-US Tax Treaty where relevant
+- Reference the Canadian T1 return and foreign tax credit
+- Do NOT hallucinate tax rules
+- End with a 3-item "Key Takeaways for ${stateName} landlords" bullet list
+
+Output ONLY the MDX content body (no frontmatter, no disclaimer, no CTA).`;
+}
+
 function buildFormPrompt(
   formCode: string,
   formName: string,
@@ -374,6 +417,102 @@ async function generateFormPages() {
   }
 }
 
+async function generateIrsStateFormGuides(useBatch = true) {
+  const irsOnlyForms = IRS_FORMS;
+
+  if (useBatch) {
+    const requests: BatchRequest[] = [];
+    const outputMap: Record<string, { path: string; frontmatter: Record<string, unknown> }> = {};
+
+    for (const state of US_STATES) {
+      for (const form of irsOnlyForms) {
+        const outputPath = `forms/irs/${state.slug}/${form.slug}`;
+        const fullPath = path.join(CONTENT_DIR, outputPath + ".mdx");
+        if (fs.existsSync(fullPath)) continue; // skip already-generated
+
+        const customId = `irs-state-${state.slug}-${form.slug}`;
+        const prompt = buildIrsStateFormPrompt(
+          form.code, form.name, form.description,
+          form.filingDeadline, form.applicableTo, form.tags,
+          state.name, state.code,
+          state.hasStateTax, state.incomeTaxRate,
+          state.propertyTaxAvgRate, state.specialNotes
+        );
+
+        requests.push({
+          custom_id: customId,
+          params: {
+            model: "claude-haiku-4-5",
+            max_tokens: 2048,
+            system: "You are a precise, expert cross-border Canadian/US tax writer. Write accurate, well-structured MDX content. Never fabricate tax rules.",
+            messages: [{ role: "user", content: prompt }],
+          },
+        });
+
+        outputMap[customId] = {
+          path: outputPath,
+          frontmatter: {
+            title: `${form.code} for Canadian Landlords in ${state.name} — Complete Guide`,
+            description: `How to use ${form.code} as a Canadian landlord with rental property in ${state.name}. ${state.hasStateTax ? `Includes ${state.name}'s ${state.incomeTaxRate}% state tax obligations.` : `${state.name} has no state income tax.`}`,
+            form: form.code,
+            state: state.name,
+            stateCode: state.code,
+            publishedAt: TODAY,
+            updatedAt: TODAY,
+            reviewed: false,
+            disclaimer: true,
+            keywords: [
+              `${form.code.toLowerCase()} ${state.name.toLowerCase()} canadian landlord`,
+              `${state.name.toLowerCase()} rental property non-resident ${form.tags[0] ?? ""}`,
+            ],
+            schema: "article",
+          },
+        };
+      }
+    }
+
+    if (requests.length === 0) {
+      console.log("⏭  All IRS state form pages already exist — nothing to generate.");
+      return;
+    }
+
+    await generateBatch(requests, outputMap);
+  } else {
+    for (const state of US_STATES) {
+      for (const form of irsOnlyForms) {
+        const outputPath = `forms/irs/${state.slug}/${form.slug}`;
+        const fullPath = path.join(CONTENT_DIR, outputPath + ".mdx");
+        if (fs.existsSync(fullPath)) {
+          console.log(`⏭  Skipping (exists): ${outputPath}`);
+          continue;
+        }
+
+        const prompt = buildIrsStateFormPrompt(
+          form.code, form.name, form.description,
+          form.filingDeadline, form.applicableTo, form.tags,
+          state.name, state.code,
+          state.hasStateTax, state.incomeTaxRate,
+          state.propertyTaxAvgRate, state.specialNotes
+        );
+
+        await generateSinglePage(prompt, {
+          title: `${form.code} for Canadian Landlords in ${state.name}`,
+          description: `Guide to ${form.code} for Canadian landlords with ${state.name} rental property.`,
+          form: form.code,
+          state: state.name,
+          publishedAt: TODAY,
+          updatedAt: TODAY,
+          reviewed: false,
+          disclaimer: true,
+          schema: "article",
+        }, outputPath);
+
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+    }
+  }
+}
+
 // ─── CLI Entry Point ──────────────────────────────────────────────────────────
 
 async function main() {
@@ -402,6 +541,9 @@ async function main() {
   }
   if (category === "forms" || all) {
     await generateFormPages();
+  }
+  if (category === "irs-state-forms" || all) {
+    await generateIrsStateFormGuides(mode === "batch");
   }
 
   console.log("\n✅ Done!");

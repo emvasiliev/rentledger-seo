@@ -224,6 +224,32 @@ export const IRS_FORMS: TaxForm[] = [
     relatedForms: ["fbar", "1040"],
     tags: ["FATCA", "Form 8938", "foreign assets", "reporting", "Canadian accounts"],
   },
+  {
+    id: "form-w-8eci",
+    code: "Form W-8ECI",
+    name: "Certificate of Foreign Person's Claim That Income Is Effectively Connected With the Conduct of a Trade or Business in the United States",
+    authority: "IRS",
+    slug: "form-w-8eci",
+    description: "Canadian landlords who elect to treat US rental income as Effectively Connected Income (ECI) under IRC Section 871(d) must provide Form W-8ECI to their US tenants or property managers. This exempts the rent from the default 30% flat withholding tax and allows the landlord to file Form 1040-NR with full expense deductions instead.",
+    applicableTo: "Non-resident alien landlords who have made (or intend to make) a Section 871(d) election to treat US rental income as ECI",
+    filingDeadline: "Provided to the withholding agent before the first rental payment; renewed every 3 years",
+    officialUrl: "https://www.irs.gov/forms-pubs/about-form-w-8eci",
+    relatedForms: ["1040-nr", "schedule-e", "form-4562"],
+    tags: ["W-8ECI", "effectively connected income", "ECI", "Section 871(d)", "withholding exemption", "non-resident"],
+  },
+  {
+    id: "form-8833",
+    code: "Form 8833",
+    name: "Treaty-Based Return Position Disclosure Under Section 6114 or 7701(b)",
+    authority: "IRS",
+    slug: "form-8833",
+    description: "Canadian landlords who claim treaty benefits under the Canada-US Tax Treaty (e.g., reduced withholding rates, exemption from certain taxes, or treaty-based residency positions) must disclose these positions on Form 8833. This is particularly relevant when claiming reduced Part XIII withholding rates or when using treaty tie-breaker rules to establish Canadian residency.",
+    applicableTo: "Non-resident aliens (including Canadians) who claim a tax treaty position that overrides or modifies US domestic tax law on their US tax return",
+    filingDeadline: "Attached to Form 1040-NR by April 15 (or June 15 for non-residents with no US withholding)",
+    officialUrl: "https://www.irs.gov/forms-pubs/about-form-8833",
+    relatedForms: ["1040-nr", "form-8840", "schedule-e"],
+    tags: ["Form 8833", "tax treaty", "Canada-US treaty", "treaty benefits", "withholding reduction", "tie-breaker"],
+  },
 ];
 
 export const ALL_FORMS = [...CRA_FORMS, ...IRS_FORMS];

@@ -30,6 +30,16 @@ export default function ToolsIndexPage() {
           <div className="mt-4 text-blue-600 text-sm font-medium">View all years →</div>
         </a>
 
+        <a href="/tools/cra-remittance-calculator"
+          className="rounded-xl border-2 border-gray-200 p-6 hover:border-blue-400 transition">
+          <div className="text-3xl mb-3">🧮</div>
+          <div className="font-bold text-gray-900 text-lg">CRA Part XIII Remittance Calculator</div>
+          <p className="mt-2 text-gray-600 text-sm">
+            Calculate your monthly 25% withholding obligations across multiple properties. Handles last-month deposits and NR6 elections.
+          </p>
+          <div className="mt-4 text-blue-600 text-sm font-medium">Calculate now →</div>
+        </a>
+
         <a href="/guides"
           className="rounded-xl border-2 border-gray-200 p-6 hover:border-blue-400 transition">
           <div className="text-3xl mb-3">🗺️</div>
