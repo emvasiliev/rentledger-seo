@@ -75,6 +75,7 @@ function Header() {
 
         {/* Nav */}
         <nav className="hidden sm:flex items-center gap-6 text-sm text-[hsl(215_16%_40%)]">
+          <a href="/tools/cra-remittance-calculator" className="font-medium text-[hsl(152_60%_36%)] hover:text-[hsl(152_60%_28%)] transition-colors">CRA Calculator</a>
           <a href="/guides" className="hover:text-[hsl(152_60%_36%)] transition-colors">Guides</a>
           <a href="/forms" className="hover:text-[hsl(152_60%_36%)] transition-colors">Forms</a>
           <a href="/topics" className="hover:text-[hsl(152_60%_36%)] transition-colors">Topics</a>
