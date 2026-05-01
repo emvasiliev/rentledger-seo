@@ -81,9 +81,16 @@ git push
 - Rotate the API key at console.anthropic.com (old one was exposed in chat)
 
 ## TODO / Next Steps
-1. Rotate the Anthropic API key (old one was shared in chat)
-2. Submit sitemap to Bing Webmaster Tools
-3. Check Google Search Console in 7 days for indexed pages
-4. Regenerate content yearly when tax rules change
-5. Add more topic pages as needed
-6. Consider adding a blog for fresh content signals
+
+### Next Week (week of 2026-05-04)
+1. Check Google Search Console for indexing coverage
+2. Fix Lovable app features (app.rentledger.ca)
+
+### Ongoing
+- Refresh content yearly: `npm run generate:all` then `git push`
+- Add more topic pages as needed
+- Consider adding a blog for fresh content signals
+
+### Done
+- ~~Rotate the Anthropic API key~~ (completed)
+- ~~Submit sitemap to Google Search Console~~ (735 pages discovered)

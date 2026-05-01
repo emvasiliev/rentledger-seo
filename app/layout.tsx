@@ -45,7 +45,7 @@ function Header() {
         <a href="/" className="flex items-center gap-2">
           <div
             className="h-8 w-8 rounded-[0.625rem] flex items-center justify-center"
-            style={{ backgroundColor: "hsl(152 60% 46%)" }}
+            style={{ backgroundColor: "hsl(218 28% 22%)" }}
           >
             {/* Receipt icon (lucide) — inlined SVG */}
             <svg
@@ -112,7 +112,7 @@ function Footer() {
         <div className="flex items-center gap-2 mb-8">
           <div
             className="h-7 w-7 rounded-[0.5rem] flex items-center justify-center"
-            style={{ backgroundColor: "hsl(152 60% 46%)" }}
+            style={{ backgroundColor: "hsl(218 28% 22%)" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
