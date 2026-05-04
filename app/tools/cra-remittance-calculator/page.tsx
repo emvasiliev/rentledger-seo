@@ -46,6 +46,9 @@ export default function CraRemittanceCalculatorPage() {
         <h1 className="mb-3 text-3xl font-bold text-gray-900">
           Free CRA Part XIII Remittance Calculator
         </h1>
+        <p className="mb-2 text-sm font-medium text-[hsl(152_60%_36%)]">
+          This calculator is for non-resident landlords (e.g., US residents) earning rental income from Canadian property.
+        </p>
         <p className="mb-2 text-lg text-gray-600">
           As a non-resident landlord with Canadian rental property, you must remit{" "}
           <strong>25% of gross rent</strong> to CRA by the 15th of the following month. Calculate
