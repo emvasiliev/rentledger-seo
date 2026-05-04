@@ -202,6 +202,16 @@ export const TOPICS: Topic[] = [
     difficulty: "intermediate",
   },
   {
+    id: "30-percent-withholding-trap",
+    slug: "the-30-percent-withholding-trap-canadian-landlords",
+    title: "The 30% Tax Trap: What Canadian Landlords with US Rental Properties Must Know",
+    description: "Most Canadian landlords don't know their tenants must withhold 30% of every rent cheque for the IRS. Here's how the trap works — and the IRC 871(d) election that escapes it.",
+    keywords: ["30% withholding tax US rental Canada", "IRC 871(d) election", "non-resident alien rental withholding", "Canadian landlord US property IRS"],
+    category: "cross-border",
+    relatedForms: ["1040-nr", "schedule-e", "w-7", "form-4562"],
+    difficulty: "intermediate",
+  },
+  {
     id: "gst-hst-rental",
     slug: "gst-hst-rental-property-canada",
     title: "GST/HST and Rental Property in Canada: What Landlords Need to Know",
