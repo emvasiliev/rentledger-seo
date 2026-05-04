@@ -10,6 +10,8 @@
  *   npx tsx scripts/generate-content.ts --mode=batch --category=guides --province=ontario
  *   npx tsx scripts/generate-content.ts --mode=batch --category=guides --all
  *   npx tsx scripts/generate-content.ts --mode=single --slug=topics/nr4-slip-guide-non-resident-landlords
+ *   npx tsx scripts/generate-content.ts --mode=batch --category=us-canada-guides --all
+ *   npx tsx scripts/generate-content.ts --mode=batch --category=us-canada-guides --state=texas
  *
  * Set ANTHROPIC_API_KEY in .env.local before running.
  */
@@ -513,6 +515,160 @@ async function generateIrsStateFormGuides(useBatch = true) {
   }
 }
 
+// ─── US → Canada Guide Generator ─────────────────────────────────────────────
+
+function buildUsCanadaGuidePrompt(
+  stateName: string,
+  stateCode: string,
+  provinceName: string,
+  provinceCode: string,
+  provinceTaxRate: number,
+  exchangeRate: number
+): string {
+  return `You are a cross-border tax expert writing content for RentLedger.ca, a platform for landlords with cross-border property.
+
+Write a detailed, accurate, and practical guide for a ${stateName} resident (US citizen or green card holder) who owns rental property in ${provinceName}, Canada.
+
+## Requirements:
+- Length: 800–1,200 words
+- Tone: Practical, trustworthy, jargon-explained
+- Structure: Use ## and ### headings
+- Include specific tax rates, form numbers, and deadlines
+- Do NOT use vague language — be specific
+- Do NOT hallucinate tax rules — only state well-known, established tax facts
+- End with a 3-5 item bullet list of "Key Takeaways for ${stateName} landlords with ${provinceName} property"
+
+## Key Facts to Incorporate:
+- US State of residence: ${stateName} (${stateCode})
+- Canadian Province of property: ${provinceName} (${provinceCode})
+- Part XIII withholding: 25% of gross rent withheld monthly by Canadian agent — remitted to CRA
+- NR6 election: available to reduce withholding to net income basis
+- Section 216 election: file Canadian return on net income, typically results in refund
+- NR4 slip: issued by property manager at year end, shows gross rent and tax withheld
+- IRS: US landlord must report Canadian rental income on Schedule E (Form 1040), converted to USD
+- Foreign tax credit: Form 1116 to offset Canadian taxes against US tax
+- ${CURRENT_TAX_YEAR} average exchange rate: 1 CAD ≈ ${(1 / exchangeRate).toFixed(4)} USD (Bank of Canada annual average inverted)
+- ${provinceName} top provincial tax rate: ${provinceTaxRate}% (combined federal + provincial)
+- Section 216 return due: June 15 of following year
+- FBAR: required if Canadian bank accounts exceed $10,000 USD at any point during the year
+
+## Required Sections:
+1. Overview — why US landlords with Canadian property face dual obligations
+2. Canadian obligations (Part XIII withholding, NR6 election, Section 216 election, NR4 slip)
+3. US obligations (Schedule E on Form 1040, currency conversion, Form 1116 foreign tax credit)
+4. ${provinceName} provincial tax on Section 216 return
+5. Selling the ${provinceName} property (Section 116 withholding, Canadian capital gains, US capital gains)
+6. Key deadlines table (CRA and IRS)
+7. Key Takeaways
+
+Do NOT add a disclaimer — handled separately.
+Do NOT add a CTA — handled separately.
+Output ONLY the MDX content body (no frontmatter).`;
+}
+
+async function generateUsCanadaGuides(
+  stateSlugFilter?: string,
+  useBatch = true
+) {
+  const states = stateSlugFilter
+    ? US_STATES.filter((s) => s.slug === stateSlugFilter)
+    : US_STATES;
+
+  const exchangeRate = CURRENT_RATE?.usdToCad ?? 1.36;
+
+  if (useBatch) {
+    const requests: BatchRequest[] = [];
+    const outputMap: Record<string, { path: string; frontmatter: Record<string, unknown> }> = {};
+
+    for (const state of states) {
+      for (const province of PROVINCES) {
+        const outputPath = `guides/us/${state.slug}/${province.slug}`;
+        const fullPath = path.join(CONTENT_DIR, outputPath + ".mdx");
+        if (fs.existsSync(fullPath)) continue; // skip already-generated
+
+        const customId = `us-canada-guide-${state.slug}-${province.slug}`;
+        const prompt = buildUsCanadaGuidePrompt(
+          state.name, state.code,
+          province.name, province.code,
+          province.taxRate,
+          exchangeRate
+        );
+
+        requests.push({
+          custom_id: customId,
+          params: {
+            model: "claude-haiku-4-5",
+            max_tokens: 2048,
+            system: "You are a precise, expert cross-border Canadian/US tax writer. Write accurate, well-structured MDX content. Never fabricate tax rules.",
+            messages: [{ role: "user", content: prompt }],
+          },
+        });
+
+        outputMap[customId] = {
+          path: outputPath,
+          frontmatter: {
+            title: `${state.name} Landlord with ${province.name} Rental Property — Tax Guide`,
+            description: `Complete tax guide for ${state.name} residents who own rental property in ${province.name}, Canada. IRS and CRA obligations explained.`,
+            state: state.name,
+            stateCode: state.code,
+            province: province.name,
+            provinceCode: province.code,
+            publishedAt: TODAY,
+            updatedAt: TODAY,
+            reviewed: false,
+            disclaimer: true,
+            keywords: [
+              `${state.name.toLowerCase()} landlord ${province.name.toLowerCase()} canada rental`,
+              `US landlord canadian rental property ${province.name.toLowerCase()} taxes`,
+              `american owns property in canada ${province.name.toLowerCase()}`,
+            ],
+          },
+        };
+      }
+    }
+
+    if (requests.length === 0) {
+      console.log("⏭  All US → Canada guide pages already exist — nothing to generate.");
+      return;
+    }
+
+    await generateBatch(requests, outputMap);
+  } else {
+    // Single mode — generate a few for testing
+    const testStates = states.slice(0, 2);
+    const testProvinces = PROVINCES.slice(0, 3);
+    for (const state of testStates) {
+      for (const province of testProvinces) {
+        const outputPath = `guides/us/${state.slug}/${province.slug}`;
+        const fullPath = path.join(CONTENT_DIR, outputPath + ".mdx");
+        if (fs.existsSync(fullPath)) {
+          console.log(`⏭  Skipping (exists): ${outputPath}`);
+          continue;
+        }
+
+        const prompt = buildUsCanadaGuidePrompt(
+          state.name, state.code,
+          province.name, province.code,
+          province.taxRate,
+          exchangeRate
+        );
+        await generateSinglePage(prompt, {
+          title: `${state.name} Landlord with ${province.name} Rental Property — Tax Guide`,
+          description: `Tax guide for ${state.name} residents with ${province.name} rental property in Canada.`,
+          state: state.name,
+          province: province.name,
+          publishedAt: TODAY,
+          updatedAt: TODAY,
+          reviewed: false,
+          disclaimer: true,
+        }, outputPath);
+
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+    }
+  }
+}
+
 // ─── CLI Entry Point ──────────────────────────────────────────────────────────
 
 async function main() {
@@ -520,6 +676,7 @@ async function main() {
   const mode = args.find((a) => a.startsWith("--mode="))?.split("=")[1] ?? "batch";
   const category = args.find((a) => a.startsWith("--category="))?.split("=")[1];
   const provinceFilter = args.find((a) => a.startsWith("--province="))?.split("=")[1];
+  const stateFilter = args.find((a) => a.startsWith("--state="))?.split("=")[1];
   const all = args.includes("--all");
 
   if (!process.env.ANTHROPIC_API_KEY) {
@@ -544,6 +701,9 @@ async function main() {
   }
   if (category === "irs-state-forms" || all) {
     await generateIrsStateFormGuides(mode === "batch");
+  }
+  if (category === "us-canada-guides" || all) {
+    await generateUsCanadaGuides(stateFilter, mode === "batch");
   }
 
   console.log("\n✅ Done!");
