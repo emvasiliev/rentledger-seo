@@ -112,6 +112,10 @@ export default function Calculator() {
   const totalOwing = rows.reduce((s, r) => s + r.owing, 0);
   const hasAnyDeposit = properties.some((p) => p.hasDeposit);
 
+  const today = new Date();
+  const nextDeadline = new Date(today.getFullYear(), today.getMonth() + 1, 15);
+  const daysUntilDeadline = Math.ceil((nextDeadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
   return (
     <div className="space-y-10">
 
@@ -143,7 +147,7 @@ export default function Calculator() {
             }`} />
           </button>
           <span className="text-sm font-medium text-gray-700">
-            NR6 filed — withhold on <strong>net</strong> rent
+            I have an approved NR6
           </span>
         </div>
       </div>
@@ -211,7 +215,7 @@ export default function Calculator() {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 762 Carmella, Ottawa"
+                    placeholder="e.g. 123 King Street West, Toronto, ON"
                     value={prop.name}
                     onChange={(e) => updateProperty(prop.id, "name", e.target.value)}
                     className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(152_60%_46%)]"
@@ -283,7 +287,7 @@ export default function Calculator() {
 
                     <div>
                       <label className="block text-xs font-medium text-gray-600 mb-1">
-                        Month deposit is credited to
+                        Last month of tenancy (informational only)
                       </label>
                       <input
                         type="month"
@@ -310,8 +314,39 @@ export default function Calculator() {
       </div>
 
       {/* ── Results table ─────────────────────────────────────────────────── */}
+      {properties.length > 0 && !properties.some((p) => parseFloat(p.monthlyRent) > 0) && (
+        <p className="text-sm text-gray-500">
+          Enter a monthly rent amount to calculate CRA withholding.
+        </p>
+      )}
+
       {properties.some((p) => parseFloat(p.monthlyRent) > 0) && (
         <div>
+          {taxYear < CURRENT_YEAR && (
+            <div className="mb-6 flex flex-col gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 sm:flex-row sm:items-center sm:justify-between">
+              <span>This is a historical schedule. These dates have passed.</span>
+              <a
+                href="https://app.rentledger.ca"
+                className="shrink-0 rounded-lg bg-[hsl(218_28%_22%)] px-4 py-2 text-sm font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
+              >
+                Start tracking →
+              </a>
+            </div>
+          )}
+          {taxYear === CURRENT_YEAR && (
+            <div className="mb-6 flex flex-col gap-3 rounded-lg border border-[hsl(152_60%_75%)] bg-[hsl(152_60%_96%)] px-4 py-3 text-sm text-[hsl(222_30%_12%)] sm:flex-row sm:items-center sm:justify-between">
+              <span>
+                <strong>Next CRA remittance due in {daysUntilDeadline} days.</strong>{" "}
+                Don&apos;t track this manually — RentLedger does it for you.
+              </span>
+              <a
+                href="https://app.rentledger.ca"
+                className="shrink-0 rounded-lg bg-[hsl(218_28%_22%)] px-4 py-2 text-sm font-semibold text-white hover:bg-[hsl(218_28%_30%)]"
+              >
+                Start tracking →
+              </a>
+            </div>
+          )}
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
             {taxYear} Monthly Remittance Schedule
           </h2>
@@ -398,6 +433,23 @@ export default function Calculator() {
               </div>
             </div>
           </div>
+
+          {totalOwing > 0 && (
+            <div className="mt-6 rounded-xl bg-[hsl(218_28%_22%)] p-5 text-center">
+              <p className="text-base font-semibold text-white">
+                You&apos;ll owe {formatCAD(totalOwing)} in CRA withholding this year.
+              </p>
+              <p className="mt-1 text-sm text-white/80">
+                Track this automatically, never miss a deadline, and generate your NR4 — free.
+              </p>
+              <a
+                href="https://app.rentledger.ca"
+                className="mt-4 inline-block rounded-lg bg-[hsl(152_60%_36%)] px-6 py-3 text-sm font-semibold text-white hover:bg-[hsl(152_60%_44%)]"
+              >
+                Track this in RentLedger →
+              </a>
+            </div>
+          )}
         </div>
       )}
     </div>
