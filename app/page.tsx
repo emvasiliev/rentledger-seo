@@ -72,6 +72,22 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* US landlord CTA strip */}
+      <section className="border-y border-amber-200 bg-amber-50 py-6 px-4">
+        <div className="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold text-amber-900">🇺🇸 Are you a US landlord with Canadian rental property?</p>
+            <p className="mt-1 text-sm text-amber-700">We cover IRS + CRA obligations for Americans who own in Canada — Part XIII withholding, Section 216 election, Form 1116.</p>
+          </div>
+          <a
+            href="/guides/us"
+            className="shrink-0 rounded-lg border border-amber-400 bg-white px-5 py-2.5 text-sm font-semibold text-amber-800 hover:bg-amber-100 transition-colors"
+          >
+            US landlord guides →
+          </a>
+        </div>
+      </section>
+
       {/* Popular combos */}
       <section className="bg-gray-50 py-16 px-4">
         <div className="mx-auto max-w-5xl">

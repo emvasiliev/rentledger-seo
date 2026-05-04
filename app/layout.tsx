@@ -77,7 +77,8 @@ function Header() {
         <nav className="hidden sm:flex items-center gap-6 text-sm text-[hsl(215_16%_40%)]">
           <a href="/tools/cra-remittance-calculator" className="font-medium text-[hsl(152_60%_36%)] hover:text-[hsl(152_60%_28%)] transition-colors">CRA Calculator</a>
           <a href="/tools/schedule-e-calculator" className="font-medium text-[hsl(152_60%_36%)] hover:text-[hsl(152_60%_28%)] transition-colors">Schedule E Calculator</a>
-          <a href="/guides" className="hover:text-[hsl(152_60%_36%)] transition-colors">Guides</a>
+          <a href="/guides" className="hover:text-[hsl(152_60%_36%)] transition-colors">CA Guides</a>
+          <a href="/guides/us" className="hover:text-[hsl(152_60%_36%)] transition-colors">US Guides</a>
           <a href="/forms" className="hover:text-[hsl(152_60%_36%)] transition-colors">Forms</a>
           <a href="/topics" className="hover:text-[hsl(152_60%_36%)] transition-colors">Topics</a>
           <a href="/tools/exchange-rate" className="hover:text-[hsl(152_60%_36%)] transition-colors">Exchange Rate</a>
@@ -141,7 +142,7 @@ function Footer() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-5">
           <div>
             <div
               className="text-sm font-semibold mb-3 text-[hsl(222_30%_12%)]"
@@ -169,6 +170,21 @@ function Footer() {
               <a href="/guides/british-columbia/arizona" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Arizona</a>
               <a href="/guides/ontario/texas" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Texas</a>
               <a href="/guides/british-columbia/washington" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Washington</a>
+            </div>
+          </div>
+          <div>
+            <div
+              className="text-sm font-semibold mb-3 text-[hsl(222_30%_12%)]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              US Landlords
+            </div>
+            <div className="space-y-2 text-sm text-[hsl(215_16%_40%)]">
+              <a href="/guides/us" className="block hover:text-[hsl(152_60%_36%)] transition-colors">US → Canada Guides</a>
+              <a href="/guides/us/texas/ontario" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Texas → Ontario</a>
+              <a href="/guides/us/california/british-columbia" className="block hover:text-[hsl(152_60%_36%)] transition-colors">California → BC</a>
+              <a href="/guides/us/florida/ontario" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Florida → Ontario</a>
+              <a href="/topics/section-216-election-non-resident-rental-canada" className="block hover:text-[hsl(152_60%_36%)] transition-colors">Section 216 Election</a>
             </div>
           </div>
           <div>

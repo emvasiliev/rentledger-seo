@@ -93,6 +93,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // US landlord → Canada guide pages
+  urls.push({
+    url: `${BASE_URL}/guides/us`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  });
+  for (const state of US_STATES) {
+    urls.push({
+      url: `${BASE_URL}/guides/us/${state.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    });
+    for (const province of PROVINCES) {
+      urls.push({
+        url: `${BASE_URL}/guides/us/${state.slug}/${province.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "yearly",
+        priority: 0.65,
+      });
+    }
+  }
+
   // Exchange rate year pages (MIN_YEAR to current year)
   for (let year = MAX_YEAR; year >= MIN_YEAR; year--) {
     urls.push({
