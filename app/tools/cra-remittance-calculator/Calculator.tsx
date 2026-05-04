@@ -113,7 +113,9 @@ export default function Calculator() {
   const hasAnyDeposit = properties.some((p) => p.hasDeposit);
 
   const today = new Date();
-  const nextDeadline = new Date(today.getFullYear(), today.getMonth() + 1, 15);
+  const nextDeadline = today.getDate() <= 15
+    ? new Date(today.getFullYear(), today.getMonth(), 15)
+    : new Date(today.getFullYear(), today.getMonth() + 1, 15);
   const daysUntilDeadline = Math.ceil((nextDeadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
   return (
