@@ -92,6 +92,7 @@ export async function getExchangeRateForYear(year: number): Promise<ExchangeRate
  * Update these annually.
  */
 export const FALLBACK_EXCHANGE_RATES: ExchangeRateData[] = [
+  { year: 2025, usdToCad: 1.3917, cadToUsd: 0.7186, source: "Bank of Canada annual average (fallback)", fetchedAt: "2026-01-01" },
   { year: 2024, usdToCad: 1.3606, cadToUsd: 0.7350, source: "Bank of Canada annual average (fallback)", fetchedAt: "2025-01-01" },
   { year: 2023, usdToCad: 1.3497, cadToUsd: 0.7409, source: "Bank of Canada annual average (fallback)", fetchedAt: "2024-01-01" },
   { year: 2022, usdToCad: 1.3013, cadToUsd: 0.7685, source: "Bank of Canada annual average (fallback)", fetchedAt: "2023-01-01" },

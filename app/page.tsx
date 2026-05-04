@@ -1,9 +1,14 @@
 import { PROVINCES } from "@/data/provinces";
 import { TOPICS } from "@/data/topics";
-import { FALLBACK_EXCHANGE_RATES } from "@/lib/bank-of-canada";
+import { getExchangeRateSafe, FALLBACK_EXCHANGE_RATES } from "@/lib/bank-of-canada";
 
-export default function HomePage() {
-  const currentRate = FALLBACK_EXCHANGE_RATES[0];
+export const revalidate = 86400;
+
+export default async function HomePage() {
+  const targetTaxYear = new Date().getFullYear() - 1;
+  const liveRate = await getExchangeRateSafe(targetTaxYear);
+  const currentRate = liveRate ?? FALLBACK_EXCHANGE_RATES[0];
+  const isFallback = currentRate.year !== targetTaxYear;
 
   return (
     <div>
@@ -33,11 +38,18 @@ export default function HomePage() {
 
         {currentRate && (
           <div className="mt-8 inline-block rounded-full bg-white border border-gray-200 shadow-sm px-5 py-2 text-sm text-gray-600">
-            🏦 {currentRate.year} CRA Exchange Rate: <strong>1 USD = {currentRate.usdToCad} CAD</strong>
-            {" · "}
-            <a href={`/tools/exchange-rate/${currentRate.year}`} className="text-[hsl(152_60%_36%)] hover:underline">
-              See all years →
-            </a>
+            🏦 {targetTaxYear} CRA Annual Exchange Rate: <strong>1 USD = {currentRate.usdToCad} CAD</strong>
+            <br />
+            {isFallback ? (
+              <>Using latest available rate from {currentRate.year}{" · "}Official {targetTaxYear} rate pending</>
+            ) : (
+              <>
+                Used for {targetTaxYear} tax reporting{" · "}
+                <a href={`/tools/exchange-rate/${targetTaxYear}`} className="text-[hsl(152_60%_36%)] hover:underline">
+                  See all years →
+                </a>
+              </>
+            )}
           </div>
         )}
       </section>
