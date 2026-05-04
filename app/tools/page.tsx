@@ -40,6 +40,16 @@ export default function ToolsIndexPage() {
           <div className="mt-4 text-[hsl(152_60%_36%)] text-sm font-medium">Calculate now →</div>
         </a>
 
+        <a href="/tools/schedule-e-calculator"
+          className="rounded-xl border-2 border-gray-200 p-6 hover:border-[hsl(152_60%_60%)] transition">
+          <div className="text-3xl mb-3">📋</div>
+          <div className="font-bold text-gray-900 text-lg">Schedule E Calculator</div>
+          <p className="mt-2 text-gray-600 text-sm">
+            Calculate US rental income and expenses across multiple properties. All IRS Part I deductible categories included.
+          </p>
+          <div className="mt-4 text-[hsl(152_60%_36%)] text-sm font-medium">Calculate now →</div>
+        </a>
+
         <a href="/guides"
           className="rounded-xl border-2 border-gray-200 p-6 hover:border-[hsl(152_60%_60%)] transition">
           <div className="text-3xl mb-3">🗺️</div>
