@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description: "RentLedger terms of service — record-keeping tool for Canadian landlords with US rental property.",
   robots: { index: true, follow: false },
+  alternates: { canonical: "https://rentledger.ca/terms" },
 };
 
 export default function TermsPage() {

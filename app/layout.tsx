@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   description:
     "Tax guides for Canadian landlords with US rental property. CRA T776, T1135, IRS Schedule E, 1040-NR, exchange rates, FIRPTA — everything explained.",
   metadataBase: new URL("https://rentledger.ca"),
-  alternates: { canonical: "https://rentledger.ca" },
   openGraph: {
     siteName: "RentLedger",
     type: "website",

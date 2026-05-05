@@ -2,6 +2,12 @@ import { PROVINCES } from "@/data/provinces";
 import { TOPICS } from "@/data/topics";
 import { getExchangeRateSafe, FALLBACK_EXCHANGE_RATES } from "@/lib/bank-of-canada";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://rentledger.ca" },
+};
+
 export const revalidate = 86400;
 
 export default async function HomePage() {

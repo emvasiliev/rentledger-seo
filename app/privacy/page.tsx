@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "RentLedger privacy policy — how we collect, store, and protect your data.",
   robots: { index: true, follow: false },
+  alternates: { canonical: "https://rentledger.ca/privacy" },
 };
 
 export default function PrivacyPage() {
